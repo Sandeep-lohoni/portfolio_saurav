@@ -71,35 +71,6 @@
     }
 }
 
-/*========== Variables Dark theme ==========*/
-body.dark-theme {
-    /* HSL color mode */
-    --first-color-second: hsl(var(--hue-color), 30%, 8%);
-    --title-color: hsl(var(--hue-color), 8%, 95%);
-    --text-color: hsl(var(--hue-color), 8%, 75%);
-    --input-color: hsl(var(--hue-color), 29%, 16%);
-    --body-color: hsl(var(--hue-color), 28%, 12%);
-    --container-color: hsl(var(--hue-color), 29%, 16%);
-    --scroll-bar-color: hsl(var(--hue-color), 12%, 48%);
-    --scroll-thumb-color: hsl(var(--hue-color), 12%, 36%);
-}
-
-/*========== Button Dark/Light ==========*/
-.nav__btns {
-    display: flex;
-    align-items: center;
-}
-
-.change-theme {
-    font-size: 1.25rem;
-    color: var(--title-color);
-    margin-right: var(--mb-1);
-    cursor: pointer;
-}
-
-.change-theme:hover {
-    color: var(--first-color);
-}
 
 /*==================== BASE ====================*/
 * {
@@ -253,6 +224,36 @@ img {
 .work__img img {
     transition: 1s;
 }
+ .work__link-card {
+     background-color: #f9f9f9;
+     border: 1px solid #ccc;
+     padding: 1rem;
+     margin-top: 1.5rem;
+     border-radius: 8px;
+     text-align: center;
+     max-width: 100%;
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+ .work__link-card p {
+     margin-bottom: 1rem;
+     font-size: 1rem;
+     color: #333;
+ }
+
+ .work__btn {
+     display: inline-block;
+        background-color: var(--first-color);
+        color: #FFF;
+        padding: 1rem;
+        border-radius: .5rem;
+        font-weight: var(--font-medium);
+ }
+
+ .work__btn:hover {
+     background-color:var(--first-color-alt);
+ }
 .btn {
     background-color: var(--first-color);
     color: #fff;
@@ -997,6 +998,15 @@ img {
     .testimonial__description {
         text-align: center;
     }
+        .work__link-card {
+            padding: 0.8rem;
+            font-size: 0.85rem;
+        }
+    
+        .work__btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+        }
 }
 
 /* For medium devices */
@@ -1216,6 +1226,15 @@ img {
             margin-left: auto;
             margin-right: auto;       
         }
+                .work__link-card {
+                    max-width: 600px;
+                    padding: 1.5rem;
+                    font-size: 1rem;
+                }
+        
+                .work__btn {
+                    font-size: 1rem;
+                }
 }
 
 /* For large devices */
@@ -1246,4 +1265,13 @@ img {
     .contact__inputs {
         grid-template-columns: repeat(2, 1fr);
     }
+        .work__link-card {
+            max-width: 800px;
+            padding: 2rem;
+        }
+    
+        .work__btn {
+            font-size: 1.1rem;
+            padding: 0.8rem 1.5rem;
+        }
 }
