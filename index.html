@@ -4,91 +4,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Saurav Lohani is a graphic designer building thoughtful brand identities, social media creatives, and visual systems for modern businesses.">
+    <meta name="theme-color" content="#0f172a">
 
-    <!--==================== UNICONS ====================-->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-
     <script src="https://kit.fontawesome.com/4fe56dc570.js" crossorigin="anonymous"></script>
-
-    <!--==================== SWIPER CSS ====================-->
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css">
-
-    <!--==================== CSS ====================-->
     <link rel="stylesheet" href="assets/css/styles.css">
 
-    <title>Saurav | Graphic Designer</title>
+    <title>Saurav Lohani | Graphic Designer Portfolio</title>
 </head>
 
 <body>
-    <!--==================== HEADER ====================-->
     <header class="header" id="header">
         <nav class="nav container">
-            <a href="#" class="nav__logo">
-                <img src="assets/img/nav_img.png" height="150px" width="150px" alt="Saurav">
+            <a href="#home" class="nav__logo" aria-label="Saurav Lohani home">
+                <img src="assets/img/nav_img.png" class="nav__logo-img" width="150" height="150"
+                    alt="Saurav Lohani logo">
             </a>
 
             <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list grid">
+                <ul class="nav__list">
                     <li class="nav__item">
                         <a href="#home" class="nav__link active-link">
-                            <i class="uil uil-estate nav__icon"></i> Home
+                            <i class="uil uil-estate nav__icon"></i>
+                            <span>Home</span>
                         </a>
                     </li>
                     <li class="nav__item">
                         <a href="#about" class="nav__link">
-                            <i class="uil uil-user nav__icon"></i> About
+                            <i class="uil uil-user nav__icon"></i>
+                            <span>About</span>
                         </a>
                     </li>
                     <li class="nav__item">
                         <a href="#skills" class="nav__link">
-                            <i class="uil uil-file-alt nav__icon"></i> Skills
+                            <i class="uil uil-file-alt nav__icon"></i>
+                            <span>Skills</span>
                         </a>
                     </li>
                     <li class="nav__item">
                         <a href="#services" class="nav__link">
-                            <i class="uil uil-briefcase-alt nav__icon"></i> Services
+                            <i class="uil uil-briefcase-alt nav__icon"></i>
+                            <span>Services</span>
                         </a>
                     </li>
                     <li class="nav__item">
                         <a href="#working" class="nav__link">
-                            <i class="uil uil-scenery nav__icon"></i> Work
+                            <i class="uil uil-scenery nav__icon"></i>
+                            <span>Work</span>
                         </a>
                     </li>
                     <li class="nav__item">
                         <a href="#contact" class="nav__link">
-                            <i class="uil uil-message nav__icon"></i> Contact
+                            <i class="uil uil-message nav__icon"></i>
+                            <span>Contact</span>
                         </a>
                     </li>
                 </ul>
-                <i class="uil uil-times nav__close" id="nav-close"></i>
+
+                <button type="button" class="nav__close" id="nav-close" aria-label="Close navigation menu">
+                    <i class="uil uil-times"></i>
+                </button>
+            </div>
+
+            <div class="nav__actions">
+                <button type="button" class="change-theme" id="theme-button" aria-label="Toggle dark mode">
+                    <i class="uil uil-moon"></i>
+                </button>
+                <button type="button" class="nav__toggle" id="nav-toggle" aria-label="Open navigation menu"
+                    aria-expanded="false" aria-controls="nav-menu">
+                    <i class="uil uil-apps"></i>
+                </button>
             </div>
         </nav>
     </header>
 
-    <!--==================== MAIN ====================-->
     <main class="main">
-        <!--==================== HOME ====================-->
         <section class="home section" id="home">
+            <div class="home__gradient"></div>
+            <div class="home__orb home__orb--one"></div>
+            <div class="home__orb home__orb--two"></div>
+
             <div class="home__container container grid">
-                <div class="home__content grid">
-                    <div class="home__social">
-                        <a href="https://www.linkedin.com/in/saurav-lohani-4729712b1/" target="_blank"
-                            class="home__social-icon">
+                <div class="home__content">
+                    <div class="home__social reveal reveal--left">
+                        <a href="https://www.linkedin.com/in/saurav-lohani-4729712b1/" target="_blank" rel="noreferrer"
+                            class="home__social-icon" aria-label="LinkedIn profile">
                             <i class="uil uil-linkedin-alt"></i>
                         </a>
-
-                        <a href="https://www.behance.net/sauravlohani1" target="_blank" class="home__social-icon">
+                        <a href="https://www.behance.net/sauravlohani1" target="_blank" rel="noreferrer"
+                            class="home__social-icon" aria-label="Behance profile">
                             <i class="uil uil-behance"></i>
                         </a>
-                        <a href="https://www.pinterest.com/natsufreaklucy099/" target="_blank"
-                            class="home__social-icon">
+                        <a href="https://www.pinterest.com/natsufreaklucy099/" target="_blank" rel="noreferrer"
+                            class="home__social-icon" aria-label="Pinterest profile">
                             <i class="uil uil-parking-circle"></i>
                         </a>
                     </div>
 
-                    <div class="home__img">
+                    <div class="home__data reveal reveal--up">
+                        <span class="home__eyebrow">Visual identity designer for ambitious brands</span>
+                        <h1 class="home__title">Hi, I'm Saurav</h1>
+                        <h2 class="home__subtitle">
+                            <span class="home__subtitle-static">I craft</span>
+                            <span class="typing" id="typing-text" aria-live="polite"></span>
+                        </h2>
+                        <p class="home__description">I design memorable logos, polished social media campaigns, and
+                            brand assets that help businesses look credible, modern, and ready to grow.</p>
+
+                        <div class="home__cta">
+                            <a href="#working" class="button button--flex">
+                                View Work <i class="uil uil-arrow-right button__icon"></i>
+                            </a>
+                            <a href="#contact" class="button button--ghost button--flex">
+                                Let's Talk <i class="uil uil-message button__icon"></i>
+                            </a>
+                        </div>
+
+                        <div class="home__highlights">
+                            <div class="home__highlight">
+                                <strong>20+</strong>
+                                <span>Projects delivered</span>
+                            </div>
+                            <div class="home__highlight">
+                                <strong>5+</strong>
+                                <span>Clients supported</span>
+                            </div>
+                            <div class="home__highlight">
+                                <strong>2+</strong>
+                                <span>Years experience</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="home__img reveal reveal--right">
                         <svg class="home__blob" viewBox="0 0 200 187" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                            xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true">
                             <mask id="mask0" mask-type="alpha">
                                 <path
                                     d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z" />
@@ -99,16 +151,6 @@
                                 <image class="home__blob-img" x="10" y="-17" href="assets/img/main_img.png" />
                             </g>
                         </svg>
-                    </div>
-
-                    <div class="home__data">
-                        <h1 class="home__title">Hi, I'm Saurav</h1>
-                        <h3 class="home__subtitle">Graphic Designer</h3>
-                        <p class="home__description">High-level experience in graphic design, creating visually
-                            compelling and professional designs.</p>
-                        <a href="#contact" class="button button--flex">
-                            Contact Me <i class="uil uil-message button__icon"></i>
-                        </a>
                     </div>
                 </div>
 
@@ -122,15 +164,15 @@
             </div>
         </section>
 
-        <!--==================== ABOUT ====================-->
         <section class="about section" id="about">
             <h2 class="section__title">About Me</h2>
             <span class="section__subtitle">My introduction</span>
 
             <div class="about__container container grid">
-                <img src="assets/img/about.jpg" alt="" class="about__img">
+                <img src="assets/img/about.jpg" alt="Saurav Lohani working as a graphic designer"
+                    class="about__img reveal reveal--left" loading="lazy" decoding="async">
 
-                <div class="about__data">
+                <div class="about__data reveal reveal--up">
                     <p class="about__description">I'm a creative graphic designer helping brands shine through bespoke
                         logos and social media designs.</p>
 
@@ -138,91 +180,85 @@
                         message effectively.</p>
 
                     <div class="about__info">
-                        <div>
+                        <div class="about__info-card">
                             <span class="about__info-title">2+</span>
                             <span class="about__info-name">Years <br> experience</span>
                         </div>
-                        <div>
+                        <div class="about__info-card">
                             <span class="about__info-title">20+</span>
-                            <span class="about__info-name">Completed <br> project</span>
+                            <span class="about__info-name">Completed <br> projects</span>
                         </div>
-                        <div>
+                        <div class="about__info-card">
                             <span class="about__info-title">5+</span>
-                            <span class="about__info-name">Clients <br> worked</span>
+                            <span class="about__info-name">Clients <br> worked with</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!--==================== SKILLS ====================-->
         <section class="skills section" id="skills">
             <h2 class="section__title">Skills</h2>
             <span class="section__subtitle">My technical level</span>
 
-            <div class="skills__container container grid">
-                <div>
-                    <!--==================== SKILLS 1 ====================-->
-                    <div class="skills__content skills__open">
-                        <div class="skills__header">
-                            <i class="uil uil-brackets-curly skills__icon"></i>
+            <div class="skills__container container grid reveal reveal--up">
+                <div class="skills__content skills__open">
+                    <div class="skills__header">
+                        <i class="uil uil-brackets-curly skills__icon"></i>
 
-                            <div>
-                                <h1 class="skills__title">Graphic Designer</h1>
-                                <span class="skills__subtitle">More than 2 years</span>
-                            </div>
-
-                            <i class="uil uil-angle-down skills__arrow"></i>
+                        <div>
+                            <h3 class="skills__title">Graphic Designer</h3>
+                            <span class="skills__subtitle">More than 2 years</span>
                         </div>
 
-                        <div class="skills__list grid">
-                            <div class="skills__data">
-                                <div class="skills__titles">
-                                    <h3 class="skills__name">Photoshop</h3>
-                                    <span class="skills__number">90%</span>
-                                </div>
-                                <div class="skills__bar">
-                                    <span class="skills__percentage skills__html"></span>
-                                </div>
-                            </div>
+                        <i class="uil uil-angle-down skills__arrow"></i>
+                    </div>
 
-                            <div class="skills__data">
-                                <div class="skills__titles">
-                                    <h3 class="skills__name">Illustrator</h3>
-                                    <span class="skills__number">80%</span>
-                                </div>
-                                <div class="skills__bar">
-                                    <span class="skills__percentage skills__css"></span>
-                                </div>
+                    <div class="skills__list grid">
+                        <div class="skills__data">
+                            <div class="skills__titles">
+                                <h3 class="skills__name">Photoshop</h3>
+                                <span class="skills__number">90%</span>
                             </div>
+                            <div class="skills__bar">
+                                <span class="skills__percentage skills__html"></span>
+                            </div>
+                        </div>
 
+                        <div class="skills__data">
+                            <div class="skills__titles">
+                                <h3 class="skills__name">Illustrator</h3>
+                                <span class="skills__number">80%</span>
+                            </div>
+                            <div class="skills__bar">
+                                <span class="skills__percentage skills__css"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </section>
 
-        <!--==================== QUALIFICATION ====================-->
         <section class="qualification section">
             <h2 class="section__title">Qualification</h2>
             <span class="section__subtitle">My personal journey</span>
 
-            <div class="qualification__container container">
+            <div class="qualification__container container reveal reveal--up">
                 <div class="qualification__tabs">
-                    <div class="qualification__button button--flex qualification__active" data-target="#education">
+                    <button type="button" class="qualification__button button--flex qualification__active"
+                        data-target="#education">
                         <i class="uil uil-graduation-cap qualification__icon"></i>
                         Education
-                    </div>
+                    </button>
 
-                    <div class="qualification__button button--flex" data-target="#work">
+                    <button type="button" class="qualification__button button--flex" data-target="#work">
                         <i class="uil uil-briefcase-alt qualification__icon"></i>
                         Work
-                    </div>
+                    </button>
                 </div>
 
                 <div class="qualification__sections">
-                    <!--==================== QUALIFICATION CONTENT 1 ====================-->
                     <div class="qualification__content qualification__active" data-content id="education">
-                        <!--==================== QUALIFICATION 1 ====================-->
                         <div class="qualification__data">
                             <div>
                                 <h3 class="qualification__title">Secondary School</h3>
@@ -239,7 +275,6 @@
                             </div>
                         </div>
 
-                        <!--==================== QUALIFICATION 2 ====================-->
                         <div class="qualification__data">
                             <div></div>
 
@@ -258,11 +293,10 @@
                             </div>
                         </div>
 
-                        <!--==================== QUALIFICATION 3 ====================-->
                         <div class="qualification__data">
                             <div>
                                 <h3 class="qualification__title">Graphic Designing Training</h3>
-                                <span class="qualification__subtitle">Rupandehi Job PVT.LTD</span>
+                                <span class="qualification__subtitle">Rupandehi Job PVT. LTD</span>
                                 <div class="qualification__calendar">
                                     <i class="uil uil-calendar-alt"></i>
                                     2024
@@ -275,9 +309,7 @@
                         </div>
                     </div>
 
-                    <!--==================== QUALIFICATION CONTENT 2 ====================-->
                     <div class="qualification__content" data-content id="work">
-                        <!--==================== QUALIFICATION 1 ====================-->
                         <div class="qualification__data">
                             <div>
                                 <h3 class="qualification__title">Freelancer</h3>
@@ -293,7 +325,6 @@
                             </div>
                         </div>
 
-                        <!--==================== QUALIFICATION 2 ====================-->
                         <div class="qualification__data">
                             <div></div>
 
@@ -311,7 +342,6 @@
                             </div>
                         </div>
 
-                        <!--==================== QUALIFICATION 3 ====================-->
                         <div class="qualification__data">
                             <div>
                                 <h3 class="qualification__title">Ceeros Tech</h3>
@@ -320,18 +350,18 @@
                                     July 2024 - April 2025 (Remote)
                                 </div>
                             </div>
+
                             <div>
                                 <span class="qualification__rounder"></span>
                                 <span class="qualification__line"></span>
                             </div>
                         </div>
-                        <!--==================== QUALIFICATION 4 ====================-->
+
                         <div class="qualification__data">
                             <div></div>
 
                             <div>
                                 <span class="qualification__rounder"></span>
-                                <!-- <span class="qualification__line"></span> -->
                             </div>
 
                             <div>
@@ -342,46 +372,45 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <!--==================== SERVICES ====================-->
         <section class="services section" id="services">
             <h2 class="section__title">Services</h2>
-            <span class="section__subtitle">What I offer</span>
+            <span class="section__subtitle">Design solutions tailored to your brand</span>
 
             <div class="services__container container grid">
-                <!--==================== SERVICES 1 ====================-->
-                <div class="services__content">
+                <article class="services__content reveal reveal--up">
                     <div>
                         <i class="uil uil-web-grid services__icon"></i>
                         <h3 class="services__title">Logo <br> Design</h3>
+                        <p class="services__description">Strategic logo systems built to feel distinctive, memorable,
+                            and flexible across digital and print touchpoints.</p>
                     </div>
 
-                    <span class="button button--flex button--small button--link services__button">
+                    <button type="button" class="button button--flex button--small button--link services__button">
                         View More
                         <i class="uil uil-arrow-right button__icon"></i>
-                    </span>
+                    </button>
 
                     <div class="services__modal">
                         <div class="services__modal-content">
                             <h4 class="services__modal-title">Logo <br> Design</h4>
-                            <i class="uil uil-times services__modal-close"></i>
+                            <button type="button" class="services__modal-close" aria-label="Close service details">
+                                <i class="uil uil-times"></i>
+                            </button>
 
                             <ul class="services__modal-services grid">
                                 <li class="services__modal-service">
                                     <i class="uil uil-check-circle services__modal-icon"></i>
-                                    <p>Crafting unique and memorable logos that align with your brand’s identity and
+                                    <p>Crafting unique and memorable logos that align with your brand's identity and
                                         leave a lasting impression.</p>
                                 </li>
                                 <li class="services__modal-service">
                                     <i class="uil uil-check-circle services__modal-icon"></i>
-                                    <p>Designing versatile and scalable logos tailored to your brand’s values, audience,
+                                    <p>Designing versatile and scalable logos tailored to your brand's values, audience,
                                         and industry standards.</p>
                                 </li>
                                 <li class="services__modal-service">
@@ -392,24 +421,27 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <!--==================== SERVICES 2 ====================-->
-                <div class="services__content">
+                <article class="services__content reveal reveal--up">
                     <div>
                         <i class="uil uil-instagram services__icon"></i>
                         <h3 class="services__title">Social Media<br>Post Design</h3>
+                        <p class="services__description">Campaign-ready social creatives designed to stop the scroll and
+                            make your brand instantly recognizable.</p>
                     </div>
 
-                    <span class="button button--flex button--small button--link services__button">
+                    <button type="button" class="button button--flex button--small button--link services__button">
                         View More
                         <i class="uil uil-arrow-right button__icon"></i>
-                    </span>
+                    </button>
 
                     <div class="services__modal">
                         <div class="services__modal-content">
                             <h4 class="services__modal-title">Social Media <br> Post Design</h4>
-                            <i class="uil uil-times services__modal-close"></i>
+                            <button type="button" class="services__modal-close" aria-label="Close service details">
+                                <i class="uil uil-times"></i>
+                            </button>
 
                             <ul class="services__modal-services grid">
                                 <li class="services__modal-service">
@@ -430,34 +462,37 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <!--==================== SERVICES 3 ====================-->
-                <div class="services__content">
+                <article class="services__content reveal reveal--up">
                     <div>
                         <i class="uil uil-pen services__icon"></i>
                         <h3 class="services__title">Branding <br> Design</h3>
+                        <p class="services__description">Cohesive brand materials that give your business a polished and
+                            trustworthy presence everywhere it appears.</p>
                     </div>
 
-                    <span class="button button--flex button--small button--link services__button">
+                    <button type="button" class="button button--flex button--small button--link services__button">
                         View More
                         <i class="uil uil-arrow-right button__icon"></i>
-                    </span>
+                    </button>
 
                     <div class="services__modal">
                         <div class="services__modal-content">
                             <h4 class="services__modal-title">Branding <br> Designer</h4>
-                            <i class="uil uil-times services__modal-close"></i>
+                            <button type="button" class="services__modal-close" aria-label="Close service details">
+                                <i class="uil uil-times"></i>
+                            </button>
 
                             <ul class="services__modal-services grid">
                                 <li class="services__modal-service">
                                     <i class="uil uil-check-circle services__modal-icon"></i>
                                     <p>Crafting cohesive brand identities through business cards, letterheads, flyers,
-                                        and more — ensuring consistency across all touchpoints.</p>
+                                        and more, ensuring consistency across all touchpoints.</p>
                                 </li>
                                 <li class="services__modal-service">
                                     <i class="uil uil-check-circle services__modal-icon"></i>
-                                    <p>Designing professional branding materials that reflect your brand’s personality
+                                    <p>Designing professional branding materials that reflect your brand's personality
                                         and leave a lasting impression.</p>
                                 </li>
                                 <li class="services__modal-service">
@@ -468,101 +503,153 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </article>
             </div>
         </section>
 
-        <!--=============== WORK ===============-->
         <section class="working section" id="working">
             <h2 class="section__title">Work</h2>
-            <span class="section__subtitle">My recent designs</span>
+            <span class="section__subtitle">Selected visual work and live portfolio collections</span>
 
-            <!-- Logo Design Section with Drive Link -->
-            <div class="work__category">
-                <h3 class="work__heading">Logo & Branding</h3>
-                <div class="work__link-card">
-                    <p>Click below to view all logo and branding design work.</p>
-                    <a href="https://drive.google.com/drive/folders/1qGt5EtWi_RwGOk4TjsjgK-6C3vJUkqx8?usp=sharing"
-                        target="_blank" class="work__btn">
-                        View on Google Drive
-                    </a>
-                </div>
+            <div class="work__toolbar container reveal reveal--up">
+                <button type="button" class="work__filter active-filter" data-filter="all">All</button>
+                <button type="button" class="work__filter" data-filter="branding">Branding</button>
+                <button type="button" class="work__filter" data-filter="social">Social</button>
             </div>
 
-            <!-- Social Media Post Section with Drive Link -->
-            <div class="work__category">
-                <h3 class="work__heading">Social Media Posts</h3>
-                <div class="work__link-card">
-                    <p>Explore the social media designs via the Drive link below.</p>
-                    <a href="https://drive.google.com/drive/folders/1k5KcnG1gNwkfTlMeCcGyYMWGaA_NC-pm?usp=sharing"
-                        target="_blank" class="work__btn">
-                        View on Google Drive
-                    </a>
-                </div>
-            </div>
+            <div class="work__container container grid">
+                <article class="work__card reveal reveal--up" data-category="branding">
+                    <div class="work__visual work__visual--branding">
+                        <span class="work__pill">Brand Identity</span>
+                        <i class="uil uil-palette work__visual-icon"></i>
+                    </div>
+                    <div class="work__body">
+                        <div class="work__meta">
+                            <span>Logo design</span>
+                            <span>Visual systems</span>
+                        </div>
+                        <h3 class="work__title">Logo & Branding Collection</h3>
+                        <p class="work__description">A curated archive of logo explorations, identity concepts, and
+                            polished brand assets built for businesses that want a professional visual presence.</p>
+                        <a href="https://drive.google.com/drive/folders/1qGt5EtWi_RwGOk4TjsjgK-6C3vJUkqx8?usp=sharing"
+                            target="_blank" rel="noreferrer" class="button button--flex work__btn">
+                            Open Collection <i class="uil uil-external-link-alt button__icon"></i>
+                        </a>
+                    </div>
+                </article>
 
+                <article class="work__card reveal reveal--up" data-category="social">
+                    <div class="work__visual work__visual--social">
+                        <span class="work__pill">Campaign Design</span>
+                        <i class="uil uil-instagram-alt work__visual-icon"></i>
+                    </div>
+                    <div class="work__body">
+                        <div class="work__meta">
+                            <span>Instagram</span>
+                            <span>Facebook</span>
+                        </div>
+                        <h3 class="work__title">Social Media Design Library</h3>
+                        <p class="work__description">A collection of social media post designs focused on bold layouts,
+                            consistent branding, and high engagement across modern platforms.</p>
+                        <a href="https://drive.google.com/drive/folders/1k5KcnG1gNwkfTlMeCcGyYMWGaA_NC-pm?usp=sharing"
+                            target="_blank" rel="noreferrer" class="button button--flex work__btn">
+                            Open Collection <i class="uil uil-external-link-alt button__icon"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
         </section>
 
-
-        <!--==================== CONTACT ME ====================-->
         <section class="contact section" id="contact">
             <h2 class="section__title">Contact Me</h2>
-            <span class="section__subtitle">Get in touch</span>
+            <span class="section__subtitle">Let's build visuals your audience will remember</span>
 
             <div class="contact__container container grid">
-                <div>
-                    <div class="contact__information">
-                        <i class="uil uil-whatsapp contact__icon"></i>
+                <div class="contact__card reveal reveal--left">
+                    <div class="contact__intro">
+                        <h3>Start your next design project with confidence.</h3>
+                        <p>Share your brand goals, timeline, or design challenge and I'll get back with a clear
+                            direction for the next step.</p>
+                    </div>
 
+                    <a href="tel:+9779816462689" class="contact__information">
+                        <i class="uil uil-whatsapp contact__icon"></i>
                         <div>
                             <h3 class="contact__title">Call Me</h3>
                             <span class="contact__subtitle">+977-9816462689</span>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="contact__information">
+                    <a href="mailto:sauravlohani59@gmail.com" class="contact__information">
                         <i class="uil uil-envelope contact__icon"></i>
-
                         <div>
                             <h3 class="contact__title">Email</h3>
                             <span class="contact__subtitle">sauravlohani59@gmail.com</span>
                         </div>
-                    </div>
+                    </a>
 
                     <div class="contact__information">
                         <i class="uil uil-map-marker contact__icon"></i>
-
                         <div>
                             <h3 class="contact__title">Location</h3>
                             <span class="contact__subtitle">Butwal, Nepal</span>
                         </div>
                     </div>
+
+                    <div class="contact__socials">
+                        <a href="https://www.facebook.com/profile.php?id=61558181677321" target="_blank"
+                            rel="noreferrer" class="contact__social" aria-label="Facebook profile">
+                            <i class="uil uil-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/saurav_413/" target="_blank" rel="noreferrer"
+                            class="contact__social" aria-label="Instagram profile">
+                            <i class="uil uil-instagram"></i>
+                        </a>
+                        <a href="https://x.com/SauravLoha18582" target="_blank" rel="noreferrer"
+                            class="contact__social" aria-label="X profile">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                        <a href="https://www.behance.net/sauravlohani1" target="_blank" rel="noreferrer"
+                            class="contact__social" aria-label="Behance profile">
+                            <i class="uil uil-behance"></i>
+                        </a>
+                    </div>
                 </div>
-                <form action="https://formspree.io/f/xanokoae" method="post" class="contact__form grid">
+
+                <form action="https://formspree.io/f/xanokoae" method="post" class="contact__form grid reveal reveal--up"
+                    id="contact-form" novalidate>
                     <div class="contact__inputs grid">
                         <div class="contact__content">
-                            <label for="" class="contact__label">Name</label>
-                            <input type="text" name="name" class="contact__input" placeholder="Your Name" required>
+                            <label for="name" class="contact__label">Name</label>
+                            <input type="text" id="name" name="name" class="contact__input" placeholder="Your Name"
+                                required>
+                            <span class="contact__error"></span>
                         </div>
                         <div class="contact__content">
-                            <label for="" class="contact__label">Email</label>
-                            <input type="email" name="email" class="contact__input" placeholder="Your Email">
+                            <label for="email" class="contact__label">Email</label>
+                            <input type="email" id="email" name="email" class="contact__input"
+                                placeholder="Your Email" required>
+                            <span class="contact__error"></span>
                         </div>
                     </div>
                     <div class="contact__content">
-                        <label for="" class="contact__label">Whatsapp Number</label>
-                        <input type="text" name="project" class="contact__input"
+                        <label for="phone" class="contact__label">Whatsapp Number</label>
+                        <input type="tel" id="phone" name="phone" class="contact__input"
                             placeholder="You will be contacted via this number." required>
+                        <span class="contact__error"></span>
                     </div>
                     <div class="contact__content">
-                        <label for="" class="contact__label">Project</label>
-                        <textarea name="message" id="" cols="0" rows="7" class="contact__input"
+                        <label for="message" class="contact__label">Project</label>
+                        <textarea name="message" id="message" rows="7" class="contact__input"
                             placeholder="Project description" required></textarea>
+                        <span class="contact__error"></span>
                     </div>
 
+                    <p class="contact__status" id="contact-status" aria-live="polite"></p>
+
                     <div>
-                        <button type="submit" class="btn">Send Message
-                            <i class="uil uil-message button__icon"></i>
+                        <button type="submit" class="btn">
+                            Send Message <i class="uil uil-message button__icon"></i>
                         </button>
                     </div>
                 </form>
@@ -570,13 +657,14 @@
         </section>
     </main>
 
-    <!--==================== FOOTER ====================-->
     <footer class="footer">
         <div class="footer__bg">
             <div class="footer__container container grid">
                 <div>
-                    <h1 class="footer__title"><img src="assets/img/white_logo.png" alt="" height="150px" width="150px">
-                    </h1>
+                    <h2 class="footer__title">
+                        <img src="assets/img/white_logo.png" alt="Saurav Lohani white logo" width="150" height="150"
+                            loading="lazy" decoding="async">
+                    </h2>
                     <span class="footer__subtitle">Graphic Designer</span>
                 </div>
 
@@ -593,35 +681,33 @@
                 </ul>
 
                 <div class="footer__socials">
-                    <a href="https://www.facebook.com/profile.php?id=61558181677321" target="_blank"
-                        class="footer__social">
+                    <a href="https://www.facebook.com/profile.php?id=61558181677321" target="_blank" rel="noreferrer"
+                        class="footer__social" aria-label="Facebook profile">
                         <i class="uil uil-facebook-f"></i>
                     </a>
-                    <a href="https://www.instagram.com/saurav_413/" target="_blank" class="footer__social">
+                    <a href="https://www.instagram.com/saurav_413/" target="_blank" rel="noreferrer"
+                        class="footer__social" aria-label="Instagram profile">
                         <i class="uil uil-instagram"></i>
                     </a>
-                    <a href="https://x.com/SauravLoha18582" target="_blank" class="footer__social">
+                    <a href="https://x.com/SauravLoha18582" target="_blank" rel="noreferrer" class="footer__social"
+                        aria-label="X profile">
                         <i class="fa-brands fa-x-twitter"></i>
                     </a>
-                    <a href="https://www.tiktok.com/@saurav.graphic.de" target="_blank" class="footer__social">
+                    <a href="https://www.tiktok.com/@saurav.graphic.de" target="_blank" rel="noreferrer"
+                        class="footer__social" aria-label="TikTok profile">
                         <i class="fa-brands fa-tiktok"></i>
                     </a>
                 </div>
             </div>
 
-            <p class="footer__copy">&#169; Saurav. All rights reserved</p>
+            <p class="footer__copy">&#169; Saurav. All rights reserved.</p>
         </div>
     </footer>
 
-    <!--==================== SCROLL TOP ====================-->
-    <a href="#" class="scrollup" id="scroll-up">
+    <a href="#home" class="scrollup" id="scroll-up" aria-label="Scroll back to top">
         <i class="uil uil-arrow-up scrollup__icon"></i>
     </a>
 
-    <!--==================== SWIPER JS ====================-->
-    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-
-    <!--==================== MAIN JS ====================-->
     <script src="assets/js/main.js"></script>
 </body>
 

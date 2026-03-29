@@ -1,172 +1,330 @@
-/*==================== MENU SHOW Y HIDDEN ====================*/
-const navMenu = document.getElementById("nav-menu"),
-  navToggle = document.getElementById("nav-toggle"),
-  navClose = document.getElementById("nav-close");
+const body = document.body;
+const header = document.getElementById("header");
+const navMenu = document.getElementById("nav-menu");
+const navToggle = document.getElementById("nav-toggle");
+const navClose = document.getElementById("nav-close");
+const navLinks = document.querySelectorAll(".nav__link");
+const themeButton = document.getElementById("theme-button");
+const themeMeta = document.querySelector('meta[name="theme-color"]');
+const scrollUpButton = document.getElementById("scroll-up");
 
-/*===== MENU SHOW =====*/
-/* Validate if constant exists */
-if (navToggle) {
-  navToggle.addEventListener("click", () => {
-    navMenu.classList.add("show-menu");
+const openMenu = () => {
+  navMenu?.classList.add("show-menu");
+  body.classList.add("menu-open");
+  navToggle?.setAttribute("aria-expanded", "true");
+};
+
+const closeMenu = () => {
+  navMenu?.classList.remove("show-menu");
+  body.classList.remove("menu-open");
+  navToggle?.setAttribute("aria-expanded", "false");
+};
+
+navToggle?.addEventListener("click", openMenu);
+navClose?.addEventListener("click", closeMenu);
+navLinks.forEach((link) => link.addEventListener("click", closeMenu));
+
+const skillsContent = document.querySelectorAll(".skills__content");
+const skillsHeaders = document.querySelectorAll(".skills__header");
+
+skillsHeaders.forEach((headerElement) => {
+  headerElement.addEventListener("click", () => {
+    const parent = headerElement.parentElement;
+    const isOpen = parent?.classList.contains("skills__open");
+
+    skillsContent.forEach((item) => {
+      item.classList.remove("skills__open");
+      item.classList.add("skills__close");
+    });
+
+    if (!isOpen && parent) {
+      parent.classList.remove("skills__close");
+      parent.classList.add("skills__open");
+    }
   });
-}
-
-/*===== MENU HIDDEN =====*/
-/* Validate if constant exists */
-if (navClose) {
-  navClose.addEventListener("click", () => {
-    navMenu.classList.remove("show-menu");
-  });
-}
-
-/*==================== REMOVE MENU MOBILE ====================*/
-const navLink = document.querySelectorAll(".nav__link");
-
-function linkAction() {
-  const navMenu = document.getElementById("nav-menu");
-  // When we click on each nav__link, we remove the show-menu class
-  navMenu.classList.remove("show-menu");
-}
-navLink.forEach((n) => n.addEventListener("click", linkAction));
-
-/*==================== ACCORDION SKILLS ====================*/
-const skillsContent = document.getElementsByClassName("skills__content"),
-  skillsHeader = document.querySelectorAll(".skills__header");
-
-function toggleSkills() {
-  let itemClass = this.parentNode.className;
-
-  for (i = 0; i < skillsContent.length; i++) {
-    skillsContent[i].className = "skills__content skills__close";
-  }
-  if (itemClass === "skills__content skills__close") {
-    this.parentNode.className = "skills__content skills__open";
-  }
-}
-
-skillsHeader.forEach((el) => {
-  el.addEventListener("click", toggleSkills);
 });
 
-/*==================== QUALIFICATION TABS ====================*/
-const tabs = document.querySelectorAll("[data-target]"),
-  tabContents = document.querySelectorAll("[data-content]");
+const tabs = document.querySelectorAll("[data-target]");
+const tabContents = document.querySelectorAll("[data-content]");
 
 tabs.forEach((tab) => {
   tab.addEventListener("click", () => {
     const target = document.querySelector(tab.dataset.target);
 
-    tabContents.forEach((tabContent) => {
-      tabContent.classList.remove("qualification__active");
+    tabContents.forEach((content) => {
+      content.classList.remove("qualification__active");
     });
-    target.classList.add("qualification__active");
 
-    tabs.forEach((tab) => {
-      tab.classList.remove("qualification__active");
+    tabs.forEach((item) => {
+      item.classList.remove("qualification__active");
     });
+
+    target?.classList.add("qualification__active");
     tab.classList.add("qualification__active");
   });
 });
 
-/*==================== SERVICES MODAL ====================*/
-const modalViews = document.querySelectorAll(".services__modal"),
-  modalBtns = document.querySelectorAll(".services__button"),
-  modalCloses = document.querySelectorAll(".services__modal-close");
+const modalViews = document.querySelectorAll(".services__modal");
+const modalButtons = document.querySelectorAll(".services__button");
+const modalCloses = document.querySelectorAll(".services__modal-close");
 
-let modal = function (modalClick) {
-  modalViews[modalClick].classList.add("active-modal");
-};
+const openModal = (index) => modalViews[index]?.classList.add("active-modal");
+const closeModals = () =>
+  modalViews.forEach((modal) => modal.classList.remove("active-modal"));
 
-modalBtns.forEach((modalBtn, i) => {
-  modalBtn.addEventListener("click", () => {
-    modal(i);
+modalButtons.forEach((button, index) => {
+  button.addEventListener("click", () => openModal(index));
+});
+
+modalCloses.forEach((button) => button.addEventListener("click", closeModals));
+
+modalViews.forEach((modal) => {
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) closeModals();
   });
 });
 
-modalCloses.forEach((modalClose) => {
-  modalClose.addEventListener("click", () => {
-    modalViews.forEach((modalView) => {
-      modalView.classList.remove("active-modal");
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeModals();
+});
+
+const sections = document.querySelectorAll("section[id]");
+
+const updateScrollState = () => {
+  const scrollY = window.scrollY;
+
+  sections.forEach((section) => {
+    const sectionHeight = section.offsetHeight;
+    const sectionTop = section.offsetTop - 120;
+    const sectionId = section.getAttribute("id");
+    const link = document.querySelector(`.nav__menu a[href*="${sectionId}"]`);
+
+    if (!link) return;
+
+    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+      link.classList.add("active-link");
+    } else {
+      link.classList.remove("active-link");
+    }
+  });
+
+  header?.classList.toggle("scroll-header", scrollY >= 30);
+  scrollUpButton?.classList.toggle("show-scroll", scrollY >= 500);
+};
+
+window.addEventListener("scroll", updateScrollState);
+updateScrollState();
+
+const setThemeIcon = () => {
+  const icon = themeButton?.querySelector("i");
+  const isDark = body.classList.contains("dark-theme");
+
+  if (icon) {
+    icon.className = isDark ? "uil uil-sun" : "uil uil-moon";
+  }
+
+  if (themeMeta) {
+    themeMeta.setAttribute("content", isDark ? "#07111f" : "#0f172a");
+  }
+};
+
+const selectedTheme = localStorage.getItem("selected-theme");
+
+if (selectedTheme === "dark") {
+  body.classList.add("dark-theme");
+}
+
+setThemeIcon();
+
+themeButton?.addEventListener("click", () => {
+  body.classList.toggle("dark-theme");
+  localStorage.setItem(
+    "selected-theme",
+    body.classList.contains("dark-theme") ? "dark" : "light"
+  );
+  setThemeIcon();
+});
+
+const typingTarget = document.getElementById("typing-text");
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const typingWords = [
+  "brand identities.",
+  "social campaigns.",
+  "logo systems.",
+  "visual stories.",
+];
+
+if (typingTarget) {
+  if (reducedMotion.matches) {
+    typingTarget.textContent = typingWords[0];
+  } else {
+    let wordIndex = 0;
+    let letterIndex = 0;
+    let isDeleting = false;
+
+    const type = () => {
+      const currentWord = typingWords[wordIndex];
+      const visibleWord = currentWord.slice(0, letterIndex);
+      typingTarget.textContent = visibleWord;
+
+      if (!isDeleting && letterIndex < currentWord.length) {
+        letterIndex += 1;
+        setTimeout(type, 95);
+        return;
+      }
+
+      if (!isDeleting && letterIndex === currentWord.length) {
+        isDeleting = true;
+        setTimeout(type, 1300);
+        return;
+      }
+
+      if (isDeleting && letterIndex > 0) {
+        letterIndex -= 1;
+        setTimeout(type, 55);
+        return;
+      }
+
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % typingWords.length;
+      setTimeout(type, 220);
+    };
+
+    type();
+  }
+}
+
+const revealElements = document.querySelectorAll(".reveal");
+
+if (revealElements.length) {
+  if (reducedMotion.matches) {
+    revealElements.forEach((element) => element.classList.add("is-visible"));
+  } else {
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.18,
+        rootMargin: "0px 0px -40px 0px",
+      }
+    );
+
+    revealElements.forEach((element) => revealObserver.observe(element));
+  }
+}
+
+const filterButtons = document.querySelectorAll(".work__filter");
+const workCards = document.querySelectorAll(".work__card");
+
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const filter = button.dataset.filter;
+
+    filterButtons.forEach((item) => item.classList.remove("active-filter"));
+    button.classList.add("active-filter");
+
+    workCards.forEach((card) => {
+      const matches =
+        filter === "all" || card.dataset.category === filter;
+      card.hidden = !matches;
     });
   });
 });
 
-/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
-const sections = document.querySelectorAll(".section[id]");
+const contactForm = document.getElementById("contact-form");
+const contactStatus = document.getElementById("contact-status");
 
-function scrollActive() {
-  console.log("sections:", sections);
-  const scrollY = window.pageYOffset;
+const validators = {
+  name: (value) =>
+    value.trim().length >= 2 ? "" : "Please enter at least 2 characters.",
+  email: (value) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())
+      ? ""
+      : "Please enter a valid email address.",
+  phone: (value) =>
+    /^[\d+\-\s()]{7,}$/.test(value.trim())
+      ? ""
+      : "Please enter a valid phone or WhatsApp number.",
+  message: (value) =>
+    value.trim().length >= 20
+      ? ""
+      : "Please add a short project description of at least 20 characters.",
+};
 
-  sections.forEach((current) => {
-    const sectionHeight = current.offsetHeight;
-    const sectionTop = current.offsetTop - 50;
-    sectionId = current.getAttribute("id");
+const setFieldError = (field, message) => {
+  const wrapper = field.closest(".contact__content");
+  const errorElement = wrapper?.querySelector(".contact__error");
 
-    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-      document
-        .querySelector(".nav__menu a[href*=" + sectionId + "]")
-        .classList.add("active-link");
-    } else {
-      document
-        .querySelector(".nav__menu a[href*=" + sectionId + "]")
-        .classList.remove("active-link");
+  wrapper?.classList.toggle("has-error", Boolean(message));
+
+  if (errorElement) {
+    errorElement.textContent = message;
+  }
+};
+
+const validateField = (field) => {
+  const validator = validators[field.name];
+  if (!validator) return true;
+
+  const message = validator(field.value);
+  setFieldError(field, message);
+  return message === "";
+};
+
+contactForm?.querySelectorAll(".contact__input").forEach((field) => {
+  field.addEventListener("blur", () => validateField(field));
+  field.addEventListener("input", () => {
+    if (field.closest(".contact__content")?.classList.contains("has-error")) {
+      validateField(field);
     }
   });
-}
+});
 
-window.addEventListener("scroll", scrollActive);
+contactForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
 
-/*==================== CHANGE BACKGROUND HEADER ====================*/
-function scrollHeader() {
-  const nav = document.getElementById("header");
-  // When the scroll is greater than 200 viewport height, add the scroll-header class to the header tag
-  if (this.scrollY >= 80) nav.classList.add("scroll-header");
-  else nav.classList.remove("scroll-header");
-}
-window.addEventListener("scroll", scrollHeader);
+  const fields = [...contactForm.querySelectorAll(".contact__input")];
+  const isValid = fields.every((field) => validateField(field));
 
-/*==================== SHOW SCROLL UP ====================*/
-function scrollUp() {
-  const scrollUp = document.getElementById("scroll-up");
-  // When the scroll is higher than 560 viewport height, add the show-scroll class to the a tag with the scroll-up class
-  if (this.scrollY >= 560) scrollUp.classList.add("show-scroll");
-  else scrollUp.classList.remove("show-scroll");
-}
-window.addEventListener("scroll", scrollUp);
+  if (!isValid) {
+    contactStatus.textContent = "Please fix the highlighted fields before sending.";
+    contactStatus.className = "contact__status is-error";
+    return;
+  }
 
-/*==================== DARK LIGHT THEME ====================*/
-const themeButton = document.getElementById("theme-button");
-const darkTheme = "dark-theme";
-const iconTheme = "uil-sun";
+  contactStatus.textContent = "Sending your message...";
+  contactStatus.className = "contact__status";
 
-// Previously selected topic (if user selected)
-const selectedTheme = localStorage.getItem("selected-theme");
-const selectedIcon = localStorage.getItem("selected-icon");
+  try {
+    const response = await fetch(contactForm.action, {
+      method: "POST",
+      body: new FormData(contactForm),
+      headers: {
+        Accept: "application/json",
+      },
+    });
 
-// We obtain the current theme that the interface has by validating the dark-theme class
-const getCurrentTheme = () =>
-  document.body.classList.contains(darkTheme) ? "dark" : "light";
-const getCurrentIcon = () =>
-  themeButton.classList.contains(iconTheme) ? "uil-moon" : "uil-sun";
+    if (!response.ok) {
+      throw new Error("Request failed");
+    }
 
-// We validate if the user previously chose a topic
-if (selectedTheme) {
-  // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
-  document.body.classList[selectedTheme === "dark" ? "add" : "remove"](
-    darkTheme
-  );
-  themeButton.classList[selectedIcon === "uil-moon" ? "add" : "remove"](
-    iconTheme
-  );
-}
-
-// Activate / deactivate the theme manually with the button
-themeButton.addEventListener("click", () => {
-  // Add or remove the dark / icon theme
-  document.body.classList.toggle(darkTheme);
-  themeButton.classList.toggle(iconTheme);
-  // We save the theme and the current icon that the user chose
-  localStorage.setItem("selected-theme", getCurrentTheme());
-  localStorage.setItem("selected-icon", getCurrentIcon());
+    contactForm.reset();
+    contactStatus.textContent = "Thanks, your message has been sent successfully.";
+    contactStatus.className = "contact__status is-success";
+    contactForm
+      .querySelectorAll(".contact__content")
+      .forEach((item) => item.classList.remove("has-error"));
+    contactForm
+      .querySelectorAll(".contact__error")
+      .forEach((item) => (item.textContent = ""));
+  } catch (error) {
+    contactStatus.textContent =
+      "Something went wrong while sending. Please try again in a moment.";
+    contactStatus.className = "contact__status is-error";
+  }
 });
